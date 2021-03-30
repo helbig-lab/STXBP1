@@ -1,11 +1,11 @@
 ## Run all scripts
 
-# Version
-vs = 20
+start <- Sys.time()
+message(" \n Running primary analyses... \n ")
 
-setwd(paste0("/Volumes/helbig_lab/projects/STXBP1/v", vs))
+setwd(input.yaml$prime_dir)
 
-scripts_path = "/Volumes/helbig_lab/projects/STXBP1/v_scripts/primary/"
+scripts_path = input.yaml$prime_dir
 
 ## SUMMARIZE DATASET
 
