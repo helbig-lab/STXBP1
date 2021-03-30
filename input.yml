@@ -1,0 +1,42 @@
+# Inputs for user
+
+# General files
+output_dir : /Users/Desktop/STXBP1/outputs/     # required
+file_path : raw_files/ # required
+
+# Main analyses
+prime_dir : primary_analyses/ # required
+
+# Other Analyses
+secondary_dir : additional_analyses/ # Necessary for comparative effectiveness analysis
+
+# Figure generation
+fig_dir : figures/
+
+#hpo_tree :  raw_files/HPO_is.a_tree_v0.1.2.csv     # required
+#hpo_ancestor : raw_files/HPO_ancestors_v0.1.2.csv      # required
+#hpo_path : raw_files/HPO_child_paths_v0.1.2.csv      # required
+
+#num_of_iterations : 100000 # required default is 100000
+
+#variant_file : raw_files/SCN2A_full.csv       # required
+
+# Sim Files
+#sim_algorithm : 1  # optional 1 - Resnik default ; 2 - Cube
+#cluster : c # c - Cluster default ; m - Manual processing
+#sim_cluster: # returned by user if cluster selected
+
+#sim_dir: # determined automatically by user's selected sim_algorithm
+
+# Frequency Files
+#freq_dir: frequency_analyses #required
+
+# PCA Files
+#pca_dir : pca_roc_analyses #required
+#functional_variant : raw_files/SCN2A_functional_variant_list.csv #required
+#pos_prop : raw_files/pos_prop.csv
+#neg_prop : raw_files/neg_prop.csv
+
+# Misc. Files
+#other_analyses : 
+#pos_ic : raw_files/pos_IC.csv # default; pos_IC_manual.csv if created via 'compose_base_prop_ic.R' script
