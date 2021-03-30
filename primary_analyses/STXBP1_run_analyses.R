@@ -15,8 +15,8 @@ source(paste0(scripts_path, "/1_stx_base_prop_ic.R"))
 rm(list=setdiff(ls(), c("vs", "scripts_path")))
 
 # Summary output
-source(paste0(scripts_path, "2_stx_summary.R"))
-rm(list=setdiff(ls(), c("vs", "scripts_path")))
+#source(paste0(scripts_path, "2_stx_summary.R"))
+#rm(list=setdiff(ls(), c("vs", "scripts_path")))
 
 # Prop change in IC frequency
 # source(paste0(scripts_path, "3_stx_hpo_prop_ic_change.R"))
@@ -38,8 +38,8 @@ source(paste0(scripts_path, "6_stx_ptv_missense_filtered_hpo_assoc.R"))
 rm(list=setdiff(ls(), c("vs", "scripts_path")))
 
 # Recurrent variants HPO associations
-source(paste0(scripts_path, "7_stx_recurrent_var_hpo_assoc.R"))
-rm(list=setdiff(ls(), c("vs", "scripts_path")))
+#source(paste0(scripts_path, "7_stx_recurrent_var_hpo_assoc.R"))
+#rm(list=setdiff(ls(), c("vs", "scripts_path")))
 
 # Recurrent variants 406, 292, and 551 "individually collapsed" HPO associations
 source(paste0(scripts_path, "8_stx_recurrent_combined_var_hpo_assoc.R"))
@@ -52,10 +52,10 @@ rm(list=setdiff(ls(), c("vs", "scripts_path")))
 
 
 ## PHENOGRAMS
-message(" \n Creating Phenograms... \n ")
+#message(" \n Creating Phenograms... \n ")
 
-source(paste0(scripts_path, "10_stx_phenograms.R"))
-rm(list=setdiff(ls(), c("vs", "scripts_path")))
+#source(paste0(scripts_path, "10_stx_phenograms.R"))
+#rm(list=setdiff(ls(), c("vs", "scripts_path")))
 
 ## Seizure onset cumulative
 message(" \n Running cumulative seizure onset analysis... \n ")
@@ -74,10 +74,10 @@ source(paste0(input.yaml$secondary_dir, "STXBP1_seizure_freq_aed_comp_effect.R")
 
 
 ## FIGURES
-message(" \n Generating Figures... \n ")
+#message(" \n Generating Figures... \n ")
 
-source(paste0(input.yaml$fig_dir, "STXBP1_FIGURES_RUN.R"))
-rm(list=setdiff(ls(), c("vs")))
+#source(paste0(input.yaml$fig_dir, "STXBP1_FIGURES_RUN.R"))
+#rm(list=setdiff(ls(), c("vs")))
 
 # Seizure severity natural histories- runs in figures scripts
 
