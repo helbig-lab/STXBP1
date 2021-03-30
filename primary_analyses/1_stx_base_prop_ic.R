@@ -115,4 +115,6 @@ length(unique(pos_prop$HPO))
 
 write_csv(pos_IC, paste0(input.yaml$output_dir,"pos_IC_v.csv"))
 
-
+message("\n  ...term propogation complete \n ")
+stop = Sys.time()
+stop - start
