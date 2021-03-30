@@ -1,4 +1,4 @@
-﻿famID,Source_Journal,Source_PMID,Year,Sex,Phenotypic_group,age_onset_m,age_offset_m,age_eval_y,HPO,def,Notes,Nucleotide,Chr,Start,End,Ref,Alt,Func.refGeneWithVer,Gene.refGeneWithVer,GeneDetail.refGeneWithVer,ExonicFunc.refGeneWithVer,AAChange.refGeneWithVer
+﻿famID,Journal,PMID,Year,Sex,Phenotypic_group,age_onset_m,age_offset_m,age_eval_y,HPO,def,Notes,Nucleotide,Chr,Start,End,Ref,Alt,Func.refGeneWithVer,Gene.refGeneWithVer,GeneDetail.refGeneWithVer,ExonicFunc.refGeneWithVer,AAChange.refGeneWithVer
 STX_BCH_001,BCH_USA,BCH_USA,NA,M,EOEE,0.999999996,NA,8.5,HP:0003593,Infantile onset,Also published in 2017 Ann Neurol PMID 28133863 and 2014 Eur J Med Genet PMID 24189369,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 STX_BCH_001,BCH_USA,BCH_USA,NA,M,EOEE,0.999999996,NA,8.5,HP:0012469,Infantile spasms,Also published in 2017 Ann Neurol PMID 28133863 and 2014 Eur J Med Genet PMID 24189369,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 STX_BCH_001,BCH_USA,BCH_USA,NA,M,EOEE,0.999999996,NA,8.5,HP:0010851,EEG with burst suppression,Also published in 2017 Ann Neurol PMID 28133863 and 2014 Eur J Med Genet PMID 24189369,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
