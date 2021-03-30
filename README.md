@@ -1,4 +1,4 @@
-# SCN2A
+# STXBP1
 
 ### Requirements:
 * [R](https://www.r-project.org/) with packages tidyverse, stringr, dplyr, Hmisc, memoise, reshape2, readr, logisticPCA, ROCR, corrplot, and RColorBrewer.
