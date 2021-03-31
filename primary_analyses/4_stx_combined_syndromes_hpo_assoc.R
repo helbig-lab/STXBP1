@@ -1,13 +1,16 @@
+start <- Sys.time()
+message(" \n Running syndrome association analysis... \n ")
+
 library(tidyverse)
 library(Hmisc)
 
-stx_fams <- read_csv(paste0("STXBP1_full_base_v", vs, ".csv")) %>% 
+stx_fams <- read_csv(paste0(input.yaml$file_path,"STXBP1_full_base_v.csv")) %>% 
   select(famID, combined_syndromes) %>% 
   unique()
 
-stx_prop <- read_csv(paste0("full_prop_v", vs, ".csv"))
+stx_prop <- read_csv(paste0(input.yaml$file_path,"full_prop_v.csv"))
 
-hpo_def <- read_csv(paste0("pos_IC_v", vs, ".csv")) %>% 
+hpo_def <- read_csv(paste0(input.yaml$file_path,"pos_IC_v.csv")) %>% 
   select(HPO, def, freq_prop)
 
 stx_fams %>% 
@@ -44,7 +47,7 @@ for (i in 1:length(pheno_groups)) {
 }
 freq_all <- freq_all[order(-freq_all$ALL),]
 
-write.csv(freq_all, paste0("output/stx_combined_syndromes_freq_v", vs, ".csv"), row.names = F)
+write.csv(freq_all, paste0(input.yaml$output_dir,"stx_combined_syndromes_freq_v.csv"), row.names = F)
 
 ## HPO associations
 
@@ -133,8 +136,12 @@ hpo_sig <- hpo_sig[order(sig_test$pval),]
 ## FDR
 
 fdr_adjust_or = FALSE
-source(paste0("/Volumes/helbig_lab/projects/STXBP1/v_scripts/primary/FDR.R"))
+source(paste0(input.yaml$prime_dir,"FDR.R"))
 
-write.csv(fdr_res, paste0("output/stx_combined_syndromes_hpo_assoc_v", vs, ".csv"), 
+write.csv(fdr_res, paste0(input.yaml$output_dir,"output/stx_combined_syndromes_hpo_assoc_v.csv"), 
           row.names = F)
+
+message("\n  ...syndrome association analysis complete \n ")
+stop = Sys.time()
+stop - start
 
