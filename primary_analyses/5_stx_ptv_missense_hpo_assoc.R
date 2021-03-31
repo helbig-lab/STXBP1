@@ -1,13 +1,16 @@
+start <- Sys.time()
+message(" \n Running ptv missense analysis association analysis... \n ")
+
 library(tidyverse)
 library(Hmisc)
 
 # Required files
 
-stx_fams <- read_csv(paste0("STXBP1_full_base_v", vs, ".csv"))
+stx_fams <- read_csv(paste0(input.yaml$file_path,"STXBP1_full_base_v.csv"))
 
-# stx_base <- read_csv(paste0("full_base_v", vs, ".csv"))
-stx_prop <- read_csv(paste0("full_prop_v", vs, ".csv"))
-ic <- read_csv(paste0("pos_IC_v", vs, ".csv"))
+# stx_base <- read_csv(paste0(input.yaml$file_path,"full_base_v.csv"))
+stx_prop <- read_csv(paste0(input.yaml$file_path,"full_prop_v.csv"))
+ic <- read_csv(paste0(input.yaml$file_path,"pos_IC_v.csv"))
 
 
 variants <- stx_prop %>%
@@ -111,11 +114,13 @@ hpo_sig <- hpo_sig[order(hpo_sig$pval),]
 
 ## FDR
 fdr_adjust_or = FALSE
-source(paste0("/Volumes/helbig_lab/projects/STXBP1/v_scripts/primary/FDR.R"))
-write.csv(fdr_res, paste0("output/stx_ptv_missense_hpo_assoc_prop_v", 
-                          vs, "_full.csv"), row.names = FALSE)
-# fdr_adjust_or = TRUE
-# source(paste0("/Volumes/helbig_lab/projects/STXBP1/v_scripts/primary/FDR.R"))
-# write.csv(fdr_res, paste0("output/stx_ptv_missense_hpo_assoc_prop_v", 
-#                           vs, ".csv"), row.names = FALSE)
+source(paste0(input.yaml$prime_dir,"FDR.R"))
+write.csv(fdr_res, paste0(input.yaml$output_dir, "stx_ptv_missense_hpo_assoc_prop_v_full.csv"), row.names = FALSE)
 
+# fdr_adjust_or = TRUE
+# source(paste0(input.yaml$prime_dir,"FDR.R"))
+# write.csv(fdr_res, paste0(input.yaml$output_dir,"output/stx_ptv_missense_hpo_assoc_prop_v.csv"), row.names = FALSE)
+
+message("\n  ...ptv missense analysis association analysis complete \n ")
+stop = Sys.time()
+stop - start
