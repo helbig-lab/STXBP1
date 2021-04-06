@@ -1,9 +1,12 @@
+start <- Sys.time()
+message(" \n Running ptv missense (filtered) association analysis... \n ")
+
 library(tidyverse)
 library(Hmisc)
 
 # Required files
 
-stx_fams <- read_csv(paste0("STXBP1_full_base_v", vs, ".csv"))
+stx_fams <- read_csv(paste0(input.yaml$file_path,"STXBP1_full_base_v.csv"))
 
 # Excluding recurrent variants 292, 406, 551
 exclude_292_406_551 <- stx_fams %>% 
@@ -25,23 +28,23 @@ exclude_recur <- stx_fams %>%
   unique()
 
 
-# stx_base <- read_csv(paste0("full_base_v", vs, ".csv"))
-stx_prop <- read_csv(paste0("full_prop_v", vs, ".csv"))
-ic <- read_csv(paste0("pos_IC_v", vs, ".csv"))
+# stx_base <- read_csv(paste0("full_base_v.csv"))
+stx_prop <- read_csv(paste0(input.yaml$file_path,"full_prop_v.csv"))
+ic <- read_csv(paste0(input.yaml$file_path,"pos_IC_v.csv"))
 
 for (a in c("ex_292_406_551", "ex_recur_5")) {
   
   # Filter out common recurrent variants
   if (a == "ex_292_406_551") {
     variants <- stx_prop %>%
-      filter(famID %nin% exclude_292_406_551) %>% 
+      filter(!famID %in% exclude_292_406_551) %>% 
       left_join(stx_fams %>% select(famID, var_type_2)) %>%
       filter(!is.na(var_type_2)) %>%
       unique() 
     
   } else if (a == "ex_recur_5") {
     variants <- stx_prop %>%
-      filter(famID %nin% exclude_recur) %>% 
+      filter(!famID %in% exclude_recur) %>% 
       left_join(stx_fams %>% select(famID, var_type_2)) %>%
       filter(!is.na(var_type_2)) %>%
       unique() %>% 
@@ -62,7 +65,7 @@ for (a in c("ex_292_406_551", "ex_recur_5")) {
     pats <- pats_var$famID %>% unique()
     yesg_hpo <- variants %>% filter(famID %in% pats)
     
-    nog_hpo <- variants %>% filter(famID %nin% pats)
+    nog_hpo <- variants %>% filter(!famID %in% pats)
     nog_pats <- nog_hpo$famID %>% unique()
     
     # Hpo count
@@ -140,15 +143,16 @@ for (a in c("ex_292_406_551", "ex_recur_5")) {
   
   ## FDR
   fdr_adjust_or = FALSE
-  source(paste0("/Volumes/helbig_lab/projects/STXBP1/v_scripts/primary/FDR.R"))
-  write.csv(fdr_res, paste0("output/stx_ptv_missense_hpo_assoc_", a, 
-                            "_v", vs, "_full.csv"), row.names = FALSE)
+  source(paste0(input.yaml$prime_dir,"FDR.R"))
+  write.csv(fdr_res, paste0(input.yaml$output_dir,"stx_ptv_missense_hpo_assoc_"a,"_v_full.csv"), row.names = FALSE)
   # fdr_adjust_or = TRUE
-  # source(paste0("/Volumes/helbig_lab/projects/STXBP1/v_scripts/primary/FDR.R"))
-  # write.csv(fdr_res, paste0("output/stx_ptv_missense_hpo_assoc_", a, 
-  #                           "_v", vs, ".csv"), row.names = FALSE)
+  # source(paste0(input.yaml$prime_dir,"FDR.R"))
+  # write.csv(fdr_res, paste0(input.yaml$output_dir,"stx_ptv_missense_hpo_assoc_", a,"_v.csv"), row.names = FALSE)
   
 
 }
 
 
+message("\n  ...ptv missense association filtered analysis complete \n ")
+stop = Sys.time()
+stop - start
