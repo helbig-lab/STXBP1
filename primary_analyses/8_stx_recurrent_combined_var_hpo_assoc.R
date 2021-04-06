@@ -1,13 +1,16 @@
+start <- Sys.time()
+message(" \n Running recurrent combined variant association analysis... \n ")
+
 library(tidyverse)
 library(Hmisc)
 
-stx_fams <- read_csv(paste0("STXBP1_full_base_v", vs, ".csv")) %>% 
+stx_fams <- read_csv(paste0(input.yaml$file_path,"STXBP1_full_base_v.csv")) %>% 
   select(famID, variant_combined) %>% 
   unique()
 
-stx_prop <- read_csv(paste0("full_prop_v", vs, ".csv"))
+stx_prop <- read_csv(paste0(input.yaml$file_path,"full_prop_v.csv"))
 
-hpo_def <- read_csv(paste0("pos_IC_v", vs, ".csv")) %>% 
+hpo_def <- read_csv(paste0(input.yaml$file_path,"pos_IC_v.csv")) %>% 
   select(HPO, def, freq_prop)
 
 variants_list <- stx_fams %>% 
@@ -129,13 +132,17 @@ hpo_sig <- sig_test %>%
 
 hpo_sig <- hpo_sig[order(sig_test$pval),]
 
-# write.csv(hpo_sig, "STX_hpo_recurrent_var_assoc.csv", row.names = F)
+# write.csv(hpo_sig,paste0(input.yaml$output_dir,"STX_hpo_recurrent_var_assoc.csv"), row.names = F)
 
 ## FDR
 
 fdr_adjust_or = FALSE
-source(paste0("/Volumes/helbig_lab/projects/STXBP1/v_scripts/primary/FDR.R"))
+source(paste0(input.yaml$prime_dir,"FDR.R"))
 
-write.csv(fdr_res, paste0("output/stx_recurrent_variants_combined_hpo_assoc_v", vs, ".csv"), 
+write.csv(fdr_res, paste0(input.yaml$output_dir,"stx_recurrent_variants_combined_hpo_assoc_v.csv"), 
           row.names = FALSE)
 
+
+message("\n ...recurrent combined variant association analysis complete \n ")
+stop = Sys.time()
+stop - start
