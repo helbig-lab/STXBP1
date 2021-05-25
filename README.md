@@ -19,7 +19,7 @@ There are test files available here: [Files](https://github.com/helbig-lab/STXBP
 
 ```
 
-variant_file : raw_files/SCN2A_full.csv 
+file_path : raw_files/SCN2A_full.csv 
 
 ```
 
