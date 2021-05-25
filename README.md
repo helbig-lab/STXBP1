@@ -1,7 +1,7 @@
 # STXBP1
 
 ### Requirements:
-* [R](https://www.r-project.org/) with packages tidyverse, stringr, dplyr, Hmisc, memoise, reshape2, readr, logisticPCA, ROCR, corrplot, and RColorBrewer.
+* [R](https://www.r-project.org/) with packages tidyverse, stringr, dplyr, Hmisc, memoise, reshape2, readr, corrplot, and RColorBrewer.
 
 ### Steps to Run:
 * Clone the repository, modify the [config](https://github.com/helbig-lab/STXBP1/blob/master/input.yml) file.
