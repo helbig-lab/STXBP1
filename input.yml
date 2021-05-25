@@ -10,22 +10,21 @@ prime_dir : primary_analyses/ # required
 # Other Analyses
 secondary_dir : additional_analyses/ # Necessary for manual term propagation
 
+num_of_iterations : 100000 # required default is 100000
 
-hpo_tree :  raw_files/HPO_is.a_tree_v0.1.2_dl-2019-02-05_rl_2018-12-21.csv     # required
-hpo_ancestor : raw_files/HPO_ancestors_v0.1.2_dl-2019-02-05_rl_2018-12-21.csv      # required
-hpo_path : raw_files/HPO_child_paths_v0.1.2_dl-2019-02-05_rl_2018-12-21.csv      # required
-
-#num_of_iterations : 100000 # required default is 100000
-
-#variant_file : raw_files/STXBP1_full_base_v.csv       # required
+variant_file : raw_files/STXBP1_full_base_v.csv       # required
 
 # Sim Files
-#sim_algorithm : 1  # optional 1 - Resnik default ; 2 - Cube
-#cluster : c # c - Cluster default ; m - Manual processing
-#sim_cluster: # returned by user if cluster selected
+sim_algorithm : 1  # optional 1 - Resnik default ; 2 - Cube
+cluster : c # c - Cluster default ; m - Manual processing
+sim_cluster: # returned by user if cluster selected
 
-#sim_dir: # determined automatically by user's selected sim_algorithm
+sim_dir: # determined automatically by user's selected sim_algorithm
 
 # Misc. Files
 #other_analyses : 
 pos_ic : raw_files/pos_IC.csv # default; pos_IC_manual.csv if created via 'compose_base_prop_ic.R' script
+
+hpo_tree :  raw_files/HPO_is.a_tree_v0.1.2_dl-2019-02-05_rl_2018-12-21.csv     # required
+hpo_ancestor : raw_files/HPO_ancestors_v0.1.2_dl-2019-02-05_rl_2018-12-21.csv      # required
+hpo_path : raw_files/HPO_child_paths_v0.1.2_dl-2019-02-05_rl_2018-12-21.csv      # required
