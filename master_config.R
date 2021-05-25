@@ -52,13 +52,37 @@ if(is.null(input.yaml$prime_dir) == T){
   break;
 }
 
-#Manual term propagation and other analyses
-if(is.null(input.yaml$secondary_dir) == T){
-  message('\n Please mention the Field secondary_dir in input config file to complete manual term propagation...skipping this analysis \n')
-} 
-else {
+#Term propagation
+if(is.null(input.yaml$pos_ic) == F ){
+  pos_ic <- read_csv(paste0(input.yaml$file_path, "pos_IC.csv"))
+}
+else{
+    message("\n  Manually propagating information content... \n ")
+    source(paste0(input.yaml$secondary_dir,"compose_base_prop_ic.R"))
+    input.yaml$pos_ic <- read_csv(paste0(input.yaml$file_path,"pos_IC_manual.csv"))
+  if(is.null(input.yaml$pos_ic) == T){
+    message("\n  Must use default propagation file or run compose_base_prop_ic.R to continue analyses... \n ")
+    break;
+  }
+}
+
+
+#Similarity analyses
+if(is.null(input.yaml$sim_dir) == F ){
+  message("\n  Running similarity analysis... \n ")
+  source(sim_config.R)
+}
+else{
+    message("\n  Checking for similarity analysis directory source... \n ")
+    source(sim_config.R)
+    if(is.null(input.yaml$sim_dir) == F){
+      message("\n  Running similarity analyses... \n ")
+      source(sim_config.R)
+    }
+    else {
       next;
     }
+}
 
 
 message("\n  ...all selected analyses complete \n ")
