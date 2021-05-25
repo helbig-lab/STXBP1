@@ -52,17 +52,9 @@ if(is.null(input.yaml$prime_dir) == T){
   break;
 }
 
-#Comparative effectiveness analysis
+#Manual term propagation and other analyses
 if(is.null(input.yaml$secondary_dir) == T){
-  message('\n Please mention the Field secondary_dir in input config file to complete comparative analysis...skipping this analysis \n')
-} 
-else {
-      next;
-    }
-    
-# Figure generation
-if(is.null(input.yaml$fig_dir) == T){
-  message('\n Please mention the Field fig_dir in input config file to generate figures...skipping figure generation \n')
+  message('\n Please mention the Field secondary_dir in input config file to complete manual term propagation...skipping this analysis \n')
 } 
 else {
       next;
