@@ -30,7 +30,7 @@ tot_base <- read_csv(input.yaml$variant_file) %>%
 
 
 
-write_csv(tot_base, paste0(input.yaml$file_path,"full_base.csv"))
+write_csv(tot_base, paste0(input.yaml$file_path,"full_base_manual.csv"))
 
 ########
 # Base Files
@@ -45,8 +45,8 @@ pos_base <- tot_base %>%
   filter(grepl("HP:[[:digit:]]", HPO)) %>% 
   unique
 
-write_csv(neg_base, paste0(input.yaml$file_path,"neg_base.csv"))
-write_csv(pos_base, paste0(input.yaml$file_path,"pos_base.csv"))
+write_csv(neg_base, paste0(input.yaml$file_path,"neg_base_manual.csv"))
+write_csv(pos_base, paste0(input.yaml$file_path,"pos_base_manual.csv"))
 
 ########
 # Prop Files
@@ -74,13 +74,13 @@ neg_prop <- neg_base %>%
   filter(!is.na(HPO), HPO !="NA") %>% 
   unique
 
-write_csv(neg_prop, paste0(input.yaml$file_path,"neg_prop.csv"))
-write_csv(pos_prop, paste0(input.yaml$file_path,"pos_prop.csv"))
+write_csv(neg_prop, paste0(input.yaml$file_path,"neg_prop_manual.csv"))
+write_csv(pos_prop, paste0(input.yaml$file_path,"pos_prop_manual.csv"))
 
 
 full_prop <- neg_prop %>% rbind(pos_prop)
 
-write_csv(full_prop, paste0(input.yaml$file_path,"full_prop.csv"))
+write_csv(full_prop, paste0(input.yaml$file_path,"full_prop_manual.csv"))
 
 
 
@@ -91,7 +91,7 @@ neg_filter <- read_csv(paste0(input.yaml$file_path,"pruned_neg_filter_terms.csv"
 neg_prop_filt <- neg_prop %>% 
   filter(HPO %in% neg_filter$term)
 
-write_csv(neg_prop_filt, paste0(input.yaml$file_path,"neg_prop_pruned.csv"))
+write_csv(neg_prop_filt, paste0(input.yaml$file_path,"neg_prop_pruned_manual.csv"))
 
 ########################
 # Create IC
@@ -147,7 +147,7 @@ pos_IC[is.na(pos_IC)] <- 0
 
 length(unique(pos_prop$HPO))
 
-write_csv(pos_IC,paste0(input.yaml$file_path,"pos_IC.csv"))
+write_csv(pos_IC,paste0(input.yaml$file_path,"pos_IC_manual.csv"))
 
 message("\n  Propagation complete \n ")
 stop = Sys.time()
