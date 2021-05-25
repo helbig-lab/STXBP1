@@ -4,11 +4,11 @@
 * [R](https://www.r-project.org/) with packages tidyverse, stringr, dplyr, Hmisc, memoise, reshape2, readr, corrplot, and RColorBrewer.
 
 ### Steps to Run:
-* Clone the repository, modify the [config](https://github.com/helbig-lab/STXBP1/blob/master/input.yml) file.
+* Clone the repository, modify the [config](https://github.com/helbig-lab/STXBP1/blob/master/input.yml) file as needed.
 
 * In the [config file](https://github.com/helbig-lab/SCN2A/blob/master/input.yml) determine the main output_dir, this is where your output files would be written to.  Default parameters have been added for most aspects of the [config file](https://github.com/helbig-lab/STXBP1/blob/master/input.yml). Processing methods and algorithms of calculation for similarity analysis can be specified by the user in the terminal after running the below script. 
 
-* Run [R file](https://github.com/helbig-lab/STXBP1/blob/master/master_config.R), specifying the YAML config file using the --input flag .
+* Run [R file](https://github.com/helbig-lab/STXBP1/blob/master/master_config.R), specifying the YAML config file using the --input flag.
 
 ```
 ~/Rscript master_config.R --input /path_to/input.yml
@@ -19,7 +19,7 @@ There are test files available here: [Files](https://github.com/helbig-lab/STXBP
 
 ```
 
-file_path : raw_files/SCN2A_full.csv 
+file_path : raw_files/STXBP1_full_base_v.csv
 
 ```
 
@@ -34,7 +34,6 @@ Using the Human Phenotype Ontology (HPO) and a cohort of individuals annotated v
 * Running the similarity analyses scripts outside of a cluster or powerful computer may take an excessively long time.  It is recommended that you run the similarity analyses in a cluster or reduce total data in your copy of the example variant file to speed up the process.
 
 * If the ```gene_count_cube_auto.R``` file does not run, confirm that extra column was not created during initial ```cube_sim_stxbp1.csv``` file processing.  If created, the extra row can be deleted manually or by adding a line in script can to remove column this automatically.
-
 
 
 
