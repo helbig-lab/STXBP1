@@ -11,9 +11,9 @@ prime_dir : primary_analyses/ # required
 secondary_dir : additional_analyses/ # Necessary for manual term propagation
 
 
-#hpo_tree :  raw_files/HPO_is.a_tree_v0.1.2_dl-2019-02-05_rl_2018-12-21.csv     # required
-#hpo_ancestor : raw_files/HPO_ancestors_v0.1.2_dl-2019-02-05_rl_2018-12-21.csv      # required
-#hpo_path : raw_files/HPO_child_paths_v0.1.2_dl-2019-02-05_rl_2018-12-21.csv      # required
+hpo_tree :  raw_files/HPO_is.a_tree_v0.1.2_dl-2019-02-05_rl_2018-12-21.csv     # required
+hpo_ancestor : raw_files/HPO_ancestors_v0.1.2_dl-2019-02-05_rl_2018-12-21.csv      # required
+hpo_path : raw_files/HPO_child_paths_v0.1.2_dl-2019-02-05_rl_2018-12-21.csv      # required
 
 #num_of_iterations : 100000 # required default is 100000
 
@@ -28,4 +28,4 @@ secondary_dir : additional_analyses/ # Necessary for manual term propagation
 
 # Misc. Files
 #other_analyses : 
-#pos_ic : raw_files/pos_IC.csv # default; pos_IC_manual.csv if created via 'compose_base_prop_ic.R' script
+pos_ic : raw_files/pos_IC.csv # default; pos_IC_manual.csv if created via 'compose_base_prop_ic.R' script
