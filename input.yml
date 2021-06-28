@@ -9,6 +9,7 @@ prime_dir : primary_analyses/ # required
 
 # Other Analyses
 secondary_dir : additional_analyses/ # Necessary for manual term propagation
+comp_dir: comp_effectiveness_analysis/ # Necessary for comparative effectiveness
 
 num_of_iterations : 100000 # required default is 100000
 
