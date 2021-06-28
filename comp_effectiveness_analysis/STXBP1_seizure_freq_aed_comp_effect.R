@@ -1,3 +1,6 @@
+start <- Sys.time()
+message(" \n Starting comp effectiveness analysis script... \n ")
+
 library(tidyverse)
 
 #####
@@ -247,5 +250,9 @@ for (s in c("seizure_improve")) {
   }
   
 }
+                            
+message("\n  ...comparative effectiveness analyses complete \n ")
+stop = Sys.time()
+stop - start                            
 
 
