@@ -1,3 +1,6 @@
+start <- Sys.time()
+message(" \n Starting aed binning with seizure freedom for comp effectiveness analysis... \n ")
+
 library(tidyverse)
 
 stx_aed_raw <- read_csv(paste0(input.yaml$file_path,"/STXBP1_AED_clean_FINAL_v8.csv")) %>% 
@@ -184,5 +187,7 @@ ar_merged_clean <- ar_merged %>% filter(AED %in% c("VIGABATRIN", "TOPIRAMATE", "
 
 write_csv(ar_merged_clean, paste0(input.yaml$file_path,"/STX_EGRP_seizure_aed_1_month_ar_merged_seizure_free_FINAL_v8.csv"))
 
-
+message("\n  ...binning with seizure freedom complete \n ")
+stop = Sys.time()
+stop - start
 
