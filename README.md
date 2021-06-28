@@ -38,7 +38,7 @@ Using the Human Phenotype Ontology (HPO) and a cohort of individuals annotated v
 ## Comparative Effectiveness Analyses
 We've also included a set of comparative effectiveness analyses scripts, to determine the effects of certain ASMs on seizure frequency over time. All associated raw files are included in the [raw files directory](https://github.com/helbig-lab/STXBP1/tree/master/raw_files). These allow users to generate binned information on seizure frequency and medicaiton information in order to complete these analyses.
 
-* In order to run the comparative effectiveness analyses, ensure that the yaml file points to the correct directory for the comparative effectivness scripts. The default directly is ``` comp_dir: comp_effectiveness_analysis/ ``` 
+* In order to run the comparative effectiveness analyses, ensure that the yaml file points to the correct directory for the comparative effectiveness scripts. The default directly is ``` comp_dir: comp_effectiveness_analysis/ ``` 
 * After confirming the directory, run the [R file](https://github.com/helbig-lab/STXBP1/blob/master/master_config.R) (see below) to generate a the comparative effectiveness results file(s).
 
 ```
