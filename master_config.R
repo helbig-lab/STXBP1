@@ -87,18 +87,13 @@ else{
 #Comparative effectiveness analyses
 if(is.null(input.yaml$comp_dir) == F ){
   message("\n  Running comparative effectiveness analysis... \n ")
-  source(comp_config.R)
+  source(paste0(input.yaml$comp_dir,STXBP1_seizure_freq_aed_binning.R))
+  source(paste0(input.yaml$comp_dir,STXBP1_seizure_freq_aed_binning_seiz_free.R))
+  source(paste0(input.yaml$comp_dir,STXBP1_seizure_freq_aed_comp_effect.R))
 }
 else{
-    message("\n  Checking for comparative effectiveness analysis directory source... \n ")
-    source(comp_config.R)
-    if(is.null(input.yaml$comp_dir) == F){
-      message("\n  Running comparative effectiveness analysis... \n ")
-      source(comp_config.R)
-    }
-    else {
-      next;
-    }
+  message("\n  No directory found, skipping comparative effectiveness analysis... \n ")
+  next;   
 }
 
 
