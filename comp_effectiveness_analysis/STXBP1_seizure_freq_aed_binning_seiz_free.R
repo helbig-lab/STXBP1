@@ -182,7 +182,7 @@ ar_merged_clean <- ar_merged %>% filter(AED %in% c("VIGABATRIN", "TOPIRAMATE", "
   filter(time_int <= 20) %>% 
   unique()
 
-write_csv(ar_merged_clean, paste0(input.yaml$output_dir,"/STX_EGRP_seizure_aed_1_month_ar_merged_seizure_free_FINAL_v8.csv"))
+write_csv(ar_merged_clean, paste0(input.yaml$file_path,"/STX_EGRP_seizure_aed_1_month_ar_merged_seizure_free_FINAL_v8.csv"))
 
 
 
