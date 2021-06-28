@@ -1,3 +1,6 @@
+start <- Sys.time()
+message(" \n Starting aed binning for comp effectiveness analysis... \n ")
+
 library(tidyverse)
 library(Hmisc)
 
@@ -243,3 +246,7 @@ writeLines(paste0("\nKETO (months)= ", nrow(ar_merged_clean[ar_merged_clean$AED 
 writeLines(paste0("\nKETO (individuals)= ", length(unique(ar_merged_clean[ar_merged_clean$AED == "KETO",]$patID))), fileConn)
 
 close(fileConn)
+
+message("\n  ...binning complete \n ")
+stop = Sys.time()
+stop - start
