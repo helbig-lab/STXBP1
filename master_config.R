@@ -84,6 +84,23 @@ else{
     }
 }
 
+#Comparative effectiveness analyses
+if(is.null(input.yaml$comp_dir) == F ){
+  message("\n  Running comparative effectiveness analysis... \n ")
+  source(comp_config.R)
+}
+else{
+    message("\n  Checking for comparative effectiveness analysis directory source... \n ")
+    source(comp_config.R)
+    if(is.null(input.yaml$comp_dir) == F){
+      message("\n  Running comparative effectiveness analysis... \n ")
+      source(comp_config.R)
+    }
+    else {
+      next;
+    }
+}
+
 
 message("\n  ...all selected analyses complete \n ")
 stop = Sys.time()
