@@ -35,7 +35,7 @@ Using the Human Phenotype Ontology (HPO) and a cohort of individuals annotated v
 
 * If the ```gene_count_cube_auto.R``` file does not run, confirm that extra column was not created during initial ```cube_sim_stxbp1.csv``` file processing.  If created, the extra row can be deleted manually or by adding a line in script can to remove column this automatically.
 
-## Comparative Effectiveness Analysis
+## Comparative Effectiveness Analyses
 Although not necessary to run these scripts, we've included a set of comparative effectiveness analyses scripts, to determine the effects of certain ASMs over time. All associated raw files are included in the [raw files directory](https://github.com/helbig-lab/STXBP1/tree/master/raw_files). These allow users to generate binned information on seizure frequency and medicaiton information in order to complete these analyses.
 
 * In order to run the comparative effectiveness analyses, ensure that the yaml file points to the correct directory for the comparative effectivness scripts. The default directly is ``` comp_dir: comp_effectiveness_analysis/ ``` 
