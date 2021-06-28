@@ -35,7 +35,15 @@ Using the Human Phenotype Ontology (HPO) and a cohort of individuals annotated v
 
 * If the ```gene_count_cube_auto.R``` file does not run, confirm that extra column was not created during initial ```cube_sim_stxbp1.csv``` file processing.  If created, the extra row can be deleted manually or by adding a line in script can to remove column this automatically.
 
+## Comparative Effectiveness Analysis
+Although not necessary to run these scripts, we've included a set of comparative effectiveness analyses scripts, to determine the effects of certain ASMs over time. All associated raw files are included in the [raw files directory](https://github.com/helbig-lab/STXBP1/tree/master/raw_files). These allow users to generate binned information on seizure frequency and medicaiton information in order to complete these analyses.
 
+* In order to run the comparative effectiveness analyses, ensure that the yaml file points to the correct directory for the comparative effectivness scripts. The default directly is ``` comp_dir: comp_effectiveness_analysis/ ``` 
+* After confirming the directory, run the [R file](https://github.com/helbig-lab/STXBP1/blob/master/master_config.R) (see below) to generate a the comparative effectiveness results file(s).
+
+```
+~/Rscript master_config.R --input /path_to/input.yml
+```
 
 ## Optional - Term Propagation
 Although not necessary to run these scripts, as example CSVs are already provided, we've included a term propagation script within the [raw files directory](https://github.com/helbig-lab/STXBP1/tree/master/raw_files). This allows users to generate the base and propagated HPO terms on their own in order to view the process first hand. To run the propagation scripts:
@@ -47,14 +55,4 @@ Although not necessary to run these scripts, as example CSVs are already provide
 ```
 
 Note that this creates positive and negative propagation files, which are already provided in the [raw files directory](https://github.com/helbig-lab/STXBP1/tree/master/raw_files).
-
-## Optional - Comparative Effectiveness Analysis
-Although not necessary to run these scripts, we've included a set of comparative effectiveness analyses scripts, to determine the effects of certain ASMs over time. All associated raw files are included in the [raw files directory](https://github.com/helbig-lab/STXBP1/tree/master/raw_files). These allow users to generate binned information on seizure frequency and medicaiton information in order to complete these analyses.
-
-* In order to run the comparative effectiveness analyses, ensure that the yaml file points to the correct directory for the comparative effectivness scripts. The default directly is ``` comp_dir: comp_effectiveness_analysis/ ``` 
-* After confirming the directory, run the [R file](https://github.com/helbig-lab/STXBP1/blob/master/master_config.R) (see below) to generate a the comparative effectiveness results file(s).
-
-```
-~/Rscript master_config.R --input /path_to/input.yml
-```
 
