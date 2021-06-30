@@ -5,8 +5,7 @@ library(tidyverse)
 library(Hmisc)
 
 stx_aed_raw <- read_csv(paste0(input.yaml$file_path,"/STXBP1_AED_clean_FINAL_v8.csv")) %>% 
-  filter(!(RECORD_ID == "EG0086" & MED_FINAL %in% c("PREDNISOLONE", "METHYLPREDNISOLONE"))) # %>% 
-  # mutate(RECORD_ID = paste0(RECORD_ID, "P"))
+  filter(!(RECORD_ID == "EG0086" & MED_FINAL %in% c("PREDNISOLONE", "METHYLPREDNISOLONE")))
 
 stx_aed_keto_ukiss <- read_csv(paste0(input.yaml$file_path,"/STXBP1_UKISS_KETO.csv")) %>% 
   mutate(AGE_ENCOUNTER = Age_m/12) %>% 
@@ -39,18 +38,6 @@ egrp_seizures_raw <- read_csv(paste0(input.yaml$file_path,"/STXBP1_EGRP_seizure_
 #   filter(HPO_term == "HP:0032807")
 
 
-
-#####
-#####
-
-# Seizures with unknown frequency?
-# for (i in 1:length(unique(egrp_seizures_raw$RECORD_ID))) {
-#   
-#   p_tab <- egrp_seizures_raw %>% filter(RECORD_ID == unique(egrp_seizures_raw$RECORD_ID)[i]) 
-#   t_na <- which(p_tab[p_tab$Age_y == "hpo",] == "yes" & p_tab[p_tab$Age_y == "freq",] == "NAX")
-#   egrp_seizures_raw[egrp_seizures_raw$RECORD_ID == unique(egrp_seizures_raw$RECORD_ID)[i] & p_tab$Age_y == "freq", t_na] <- "1"
-#   
-# }
 
 #####
 #####
@@ -214,38 +201,6 @@ ar_merged_clean <- ar_merged %>% filter(AED %in% c("VIGABATRIN", "TOPIRAMATE", "
 # write_csv(ar_merged_clean, paste0(input.yaml$file_path,"/STX_EGRP_seizure_aed_1_month_ar_merged_Focal_Impaired_Awareness_FINAL_v8.csv"))
 # write_csv(ar_merged_clean, paste0(input.yaml$file_path,"/STX_EGRP_seizure_aed_1_month_ar_merged_Neonatal_Seizures_FINAL_v8.csv"))
 
-
-fileConn <- file(paste0(input.yaml$output_dir, "AED_summary.txt"), open = "wt")
-
-# ar_merged_clean <- ar_merged %>% filter(AED %in% c("LEVETIRACETAM", "PHENOBARBITAL", "ACTH", "TOPIRAMATE", "VIGABATRIN", "OXCARBAZEPINE",
-#                                                    "CLOBAZAM", "PREDNISOLONE", "CANNABIDIOL", "KETO", "UKISS")) %>% 
-#   mutate(AED = case_when(AED %in% c("PREDNISOLONE", "UKISS") ~ "UKISS PRED", TRUE ~ AED)) %>% 
-#   filter(time_int <= 20) %>% 
-#   unique()
-
-ar_merged_clean$patID %>% unique()
-
-ar_merged_clean %>% unique %>% filter(AED != "KETO") %>% nrow()
-
-ar_merged_clean %>% select(patID, AED) %>% unique() %>% dplyr::group_by(AED) %>% dplyr::summarize(n=n()) %>% arrange(desc(n))
-
-writeLines(paste0("\nTotal month intervals = ", nrow(ar_merged_clean)), fileConn)
-
-writeLines(paste0("\nTotal individuals = ", length(unique(ar_merged_clean$patID))), fileConn)
-
-writeLines(paste0("\nClobazam (months)= ", nrow(ar_merged_clean[ar_merged_clean$AED == "CLOBAZAM",])), fileConn)
-writeLines(paste0("\nClobazam (individuals)= ", length(unique(ar_merged_clean[ar_merged_clean$AED == "CLOBAZAM",]$patID))), fileConn)
-
-writeLines(paste0("\nMidazolam (months)= ", nrow(ar_merged_clean[ar_merged_clean$AED == "MIDAZOLAM",])), fileConn)
-writeLines(paste0("\nMidazolam (individuals)= ", length(unique(ar_merged_clean[ar_merged_clean$AED == "MIDAZOLAM",]$patID))), fileConn)
-
-writeLines(paste0("\nTopiramate (months)= ", nrow(ar_merged_clean[ar_merged_clean$AED == "TOPIRAMATE",])), fileConn)
-writeLines(paste0("\nTopiramate (individuals)= ", length(unique(ar_merged_clean[ar_merged_clean$AED == "TOPIRAMATE",]$patID))), fileConn)
-
-writeLines(paste0("\nKETO (months)= ", nrow(ar_merged_clean[ar_merged_clean$AED == "KETO",])), fileConn)
-writeLines(paste0("\nKETO (individuals)= ", length(unique(ar_merged_clean[ar_merged_clean$AED == "KETO",]$patID))), fileConn)
-
-close(fileConn)
 
 message("\n  ...binning complete \n ")
 stop = Sys.time()
