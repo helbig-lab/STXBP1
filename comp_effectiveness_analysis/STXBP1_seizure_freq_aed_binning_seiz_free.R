@@ -4,8 +4,7 @@ message(" \n Starting aed binning with seizure freedom for comp effectiveness an
 library(tidyverse)
 
 stx_aed_raw <- read_csv(paste0(input.yaml$file_path,"/STXBP1_AED_clean_FINAL_v8.csv")) %>% 
-  filter(!(RECORD_ID == "EG0086P" & MED_FINAL %in%  c("PREDNISOLONE", "METHYLPREDNISOLONE"))) # %>% 
-  # mutate(RECORD_ID = paste0(RECORD_ID, "P"))
+  filter(!(RECORD_ID == "EG0086P" & MED_FINAL %in%  c("PREDNISOLONE", "METHYLPREDNISOLONE")))
 
 stx_aed_keto_ukiss <- read_csv(paste0(input.yaml$file_path,"/STXBP1_UKISS_KETO.csv")) %>% 
   mutate(AGE_ENCOUNTER = Age_m/12) %>% 
@@ -19,8 +18,7 @@ stx_aed_raw <- stx_aed_raw %>% rbind(stx_aed_keto_ukiss)
 
 egrp_seizures_raw <- read_csv(paste0(input.yaml$file_path,"/STXBP1_EGRP_seizure_nat_hist_base_v8.csv") %>% 
   filter(Age_y == 'freq') %>% 
-  filter(HPO_term == "HP:0001250") # %>% 
-  # rename(RECORD_ID = EGRP_ID)
+  filter(HPO_term == "HP:0001250")
 
 
 
